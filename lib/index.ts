@@ -5,7 +5,7 @@ import { Cluster } from "aws-cdk-lib/aws-ecs";
 export interface FargateFunInfrastructureProps {
 }
 
-export class FargateFunInfrastructure extends Construct {
+export class FargateFunInfrastructureStack extends Construct {
 
   constructor(scope: Construct, id: string, props: FargateFunInfrastructureProps = {}) {
     super(scope, id);
