@@ -4,8 +4,8 @@ import { App } from 'aws-cdk-lib'
 import { FargateFunInfrastructureStack } from '../lib';
 
 const app = new App();
-const accountNumber = "415023725722"
-new FargateFunInfrastructureStack(app, 'CdkStack', {
+const accountNumber = process.env.AWS_ACCOUNT
+new FargateFunInfrastructureStack(app, 'FargateFunInfrastruture', {
   /* If you don't specify 'env', this stack will be environment-agnostic.
    * Account/Region-dependent features and context lookups will not work,
    * but a single synthesized template can be deployed anywhere. */

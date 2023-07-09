@@ -13,7 +13,7 @@ export class FargateFunInfrastructureStack extends Stack {
     super(scope, id);
 
     new Repository(this, "DockerRepository", {
-      repositoryName: "image_repository"
+      repositoryName: "fargate_fun_repository"
     })
 
     const vpc = new Vpc(this, "VPC", {
@@ -21,7 +21,7 @@ export class FargateFunInfrastructureStack extends Stack {
     })
 
     new Cluster(this, "FargateCluster", {
-      clusterName: "test_cluster",
+      clusterName: "fargate-fun-cluster",
       vpc: vpc
     })
 
