@@ -1,5 +1,5 @@
 import { Construct } from 'constructs';
-import { Vpc } from "aws-cdk-lib/aws-ec2";
+import { Peer, Port, SecurityGroup, Vpc } from "aws-cdk-lib/aws-ec2";
 import { Cluster } from "aws-cdk-lib/aws-ecs";
 import { Stack } from 'aws-cdk-lib';
 import { Repository } from 'aws-cdk-lib/aws-ecr';
@@ -25,5 +25,13 @@ export class FargateFunInfrastructureStack extends Stack {
       vpc: vpc
     })
 
+    const securityGroup = new SecurityGroup(this, "FargateSG", {
+      securityGroupName: "fargate-shared-sg",
+      vpc,
+      allowAllOutbound: true
+    })
+    securityGroup.addEgressRule(Peer.anyIpv4(), Port.tcp(80))
+
+    
   }
 }
